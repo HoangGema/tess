@@ -1,0 +1,422 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Giới thiệu Thái Nguyên</title>
+  <style>
+    /* Reset some default styles */
+    body, h1, h2, h3, p, ul, li, input, textarea, button {
+      margin: 0;
+      padding: 0;
+    }
+    body {
+      font-family: Arial, sans-serif;
+      line-height: 1.6;
+      color: #333;
+      background-color: #f5f5f5;
+    }
+    a {
+      text-decoration: none;
+      color: inherit;
+    }
+    /* Header */
+    header {
+      background-color: #fff;
+      padding: 20px;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+    header .container {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    header .logo {
+      font-size: 1.5em;
+      font-weight: bold;
+      color: #27ae60;
+    }
+    nav ul {
+      list-style: none;
+      display: flex;
+    }
+    nav ul li {
+      margin-left: 20px;
+    }
+    nav ul li:first-child {
+      margin-left: 0;
+    }
+    nav ul li a {
+      font-weight: bold;
+      color: #333;
+    }
+    nav ul li a:hover {
+      color: #27ae60;
+    }
+
+    /* Banner section */
+    #banner {
+      position: relative;
+      background-image: url('https://cdn.pixabay.com/photo/2017/11/13/16/19/tea-2946057_1280.jpg');
+      background-size: cover;
+      background-position: center;
+      height: 300px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      color: #fff;
+    }
+    #banner::after {
+      content: "";
+      position: absolute;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      background-color: rgba(0,0,0,0.4);
+    }
+    #banner h1 {
+      position: relative;
+      font-size: 2.5em;
+      margin: 0 20px;
+    }
+    #banner h1 span {
+      color: #f9d342;
+    }
+
+    /* Section common */
+    section {
+      padding: 40px 20px;
+    }
+    .container {
+      max-width: 1100px;
+      margin: auto;
+    }
+    h2 {
+      margin-bottom: 20px;
+      color: #27ae60;
+      text-align: center;
+    }
+    p {
+      margin-bottom: 15px;
+    }
+
+    /* Địa điểm nổi bật */
+    .places {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-around;
+      gap: 20px;
+    }
+    .place {
+      background-color: #fff;
+      border-radius: 5px;
+      overflow: hidden;
+      flex: 1 1 300px;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+      display: flex;
+      flex-direction: column;
+    }
+    .place img {
+      width: 100%;
+      height: 200px;
+      object-fit: cover;
+    }
+    .place h3 {
+      margin: 10px;
+      font-size: 1.2em;
+      color: #333;
+    }
+    .place p {
+      flex-grow: 1;
+      margin: 0 10px 10px 10px;
+      font-size: 0.95em;
+    }
+
+    /* Ẩm thực */
+    .foods {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-around;
+      gap: 20px;
+    }
+    .food {
+      background-color: #fff;
+      border-radius: 5px;
+      overflow: hidden;
+      flex: 1 1 300px;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+      display: flex;
+      flex-direction: column;
+    }
+    .food img {
+      width: 100%;
+      height: 200px;
+      object-fit: cover;
+    }
+    .food h3 {
+      margin: 10px;
+      font-size: 1.1em;
+      color: #333;
+    }
+    .food p {
+      flex-grow: 1;
+      margin: 0 10px 10px 10px;
+      font-size: 0.95em;
+    }
+
+    /* Lịch sử và Sự kiện */
+    .history-events {
+      background-color: #fff;
+      padding: 20px;
+      border-radius: 5px;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+    }
+    .history-events p {
+      font-size: 0.95em;
+    }
+
+    /* Video */
+    .video-container {
+      position: relative;
+      padding-bottom: 56.25%;
+      /* 16:9 */
+      padding-top: 25px;
+      height: 0;
+    }
+    .video-container iframe {
+      position: absolute;
+      top: 0; left: 0;
+      width: 100%;
+      height: 100%;
+    }
+
+    /* Liên hệ */
+    .contact-section {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 20px;
+    }
+    .contact-form {
+      flex: 1 1 300px;
+      background-color: #fff;
+      padding: 20px;
+      border-radius: 5px;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+    }
+    .contact-form input, .contact-form textarea {
+      width: 100%;
+      padding: 8px;
+      margin-bottom: 10px;
+      border: 1px solid #ccc;
+      border-radius: 3px;
+      font-size: 0.95em;
+    }
+    .contact-form button {
+      background-color: #27ae60;
+      color: #fff;
+      border: none;
+      padding: 10px 15px;
+      cursor: pointer;
+      border-radius: 3px;
+      font-size: 1em;
+    }
+    .contact-form button:hover {
+      background-color: #219150;
+    }
+    .contact-map {
+      flex: 1 1 300px;
+      min-height: 300px;
+    }
+    .contact-map iframe {
+      width: 100%;
+      height: 100%;
+      border: 0;
+    }
+
+    /* Footer */
+    footer {
+      background-color: #333;
+      color: #fff;
+      text-align: center;
+      padding: 15px 0;
+      margin-top: 20px;
+      font-size: 0.9em;
+    }
+    footer a {
+      color: #f9d342;
+      margin: 0 5px;
+    }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+      nav ul {
+        flex-direction: column;
+        align-items: center;
+      }
+      nav ul li {
+        margin: 5px 0;
+      }
+      .places, .foods {
+        flex-direction: column;
+        align-items: center;
+      }
+      .place, .food {
+        width: 90%;
+      }
+      .contact-section {
+        flex-direction: column;
+      }
+      .contact-form, .contact-map {
+        width: 100%;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Header -->
+  <header>
+    <div class="container">
+      <div class="logo">Thái Nguyên</div>
+      <nav>
+        <ul>
+          <li><a href="#banner">Trang Chủ</a></li>
+          <li><a href="#gioi-thieu">Giới thiệu</a></li>
+          <li><a href="#dia-diem">Địa điểm</a></li>
+          <li><a href="#am-thuc">Ẩm thực</a></li>
+          <li><a href="#lich-su">Lịch sử</a></li>
+          <li><a href="#su-kien">Sự kiện</a></li>
+          <li><a href="#video">Video</a></li>
+          <li><a href="#contact">Liên hệ</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Banner -->
+  <section id="banner">
+    <h1>Chào mừng đến <span>Thái Nguyên</span></h1>
+  </section>
+
+  <!-- Giới thiệu chung -->
+  <section id="gioi-thieu">
+    <div class="container">
+      <h2>Giới thiệu chung</h2>
+      <p>Thái Nguyên là một tỉnh thuộc vùng Đông Bắc Việt Nam, nổi tiếng với văn hóa trà và các địa danh lịch sử. Thành phố Thái Nguyên là trung tâm chính trị, kinh tế và văn hóa của tỉnh.</p>
+      <p>Thái Nguyên có nhiều danh lam thắng cảnh đẹp như Hồ Núi Cốc, đồi chè xanh mướt và các di tích cách mạng. Ngoài ra, tỉnh còn phát triển nông nghiệp với đặc sản chè Tân Cương và bánh chưng Bờ Đậu.</p>
+    </div>
+  </section>
+
+  <!-- Địa điểm nổi bật -->
+  <section id="dia-diem">
+    <div class="container">
+      <h2>Địa điểm nổi bật</h2>
+      <div class="places">
+        <!-- Hồ Núi Cốc -->
+        <div class="place">
+          <img src="https://upload.wikimedia.org/wikipedia/commons/3/39/H%E1%BB%93_N%C3%BAi_C%E1%BB%91c_01.JPG" alt="Hồ Núi Cốc">
+          <h3>Hồ Núi Cốc</h3>
+          <p>Hồ Núi Cốc là một hồ nước nhân tạo rộng lớn nằm cách thành phố Thái Nguyên khoảng 16 km về phía Tây, nổi tiếng với truyền thuyết tình yêu ý nghĩa giữa nàng Tiên Dung và chàng Chử Đồng Tử.</p>
+        </div>
+        <!-- Đồi chè Tân Cương -->
+        <div class="place">
+          <img src="https://cdn.pixabay.com/photo/2017/11/13/16/19/tea-2946057_1280.jpg" alt="Đồi chè Tân Cương">
+          <h3>Đồi chè Tân Cương</h3>
+          <p>Đồi chè Tân Cương là vùng đất trồng chè nổi tiếng của Thái Nguyên, với những ngọn đồi xanh mướt bạt ngàn. Du khách có thể tham quan vườn chè và thưởng thức trà ngay tại đồi.</p>
+        </div>
+        <!-- ATK Định Hóa -->
+        <div class="place">
+          <img src="https://cdn.pixabay.com/photo/2020/04/29/18/24/forest-5110057_1280.jpg" alt="Rừng ATK Định Hóa">
+          <h3>ATK Định Hóa</h3>
+          <p>Khu di tích ATK Định Hóa là nơi từng là trung tâm chỉ huy chiến dịch Điện Biên Phủ năm 1953. Đây là khu vực rừng núi yên bình, gợi lại những trang sử hào hùng của dân tộc.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Ẩm thực đặc sản -->
+  <section id="am-thuc">
+    <div class="container">
+      <h2>Ẩm thực đặc sản</h2>
+      <div class="foods">
+        <!-- Chè Tân Cương -->
+        <div class="food">
+          <img src="https://cdn.pixabay.com/photo/2018/04/05/13/23/tea-3292827_640.jpg" alt="Chè Tân Cương">
+          <h3>Chè Tân Cương</h3>
+          <p>Chè Tân Cương là loại trà xanh nổi tiếng của Thái Nguyên, có hương vị thơm ngon đặc trưng. Chè được trồng và chế biến thủ công, mang màu xanh đậm và mùi thơm quyến rũ.</p>
+        </div>
+        <!-- Bánh chưng Bờ Đậu -->
+        <div class="food">
+          <img src="https://cdn.pixabay.com/photo/2022/02/18/16/38/chung-cake-7021030_1280.jpg" alt="Bánh chưng Bờ Đậu">
+          <h3>Bánh chưng Bờ Đậu</h3>
+          <p>Bánh chưng Bờ Đậu là món ăn truyền thống thường xuất hiện trong các dịp lễ Tết ở Thái Nguyên. Bánh có vỏ lá dong xanh, nhân đậu xanh và thịt mỡ, tạo nên hương vị đậm đà, thơm ngon.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Lịch sử - văn hóa -->
+  <section id="lich-su">
+    <div class="container">
+      <h2>Lịch sử và văn hóa</h2>
+      <div class="history-events">
+        <p>Thái Nguyên có bề dày lịch sử văn hóa với nhiều di tích chiến tranh cách mạng và lễ hội dân gian. Đây là nơi ghi dấu nhiều sự kiện lịch sử quan trọng, đặc biệt là trong kháng chiến chống Pháp và chống Mỹ. Nơi đây còn lưu giữ nhiều truyền thống văn hóa của các dân tộc như Tày, Nùng, Sán Chay.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Sự kiện nổi bật -->
+  <section id="su-kien">
+    <div class="container">
+      <h2>Sự kiện nổi bật</h2>
+      <div class="history-events">
+        <p>Thái Nguyên thường xuyên tổ chức các sự kiện lễ hội đặc sắc như <strong>Lễ hội Chè Thái Nguyên</strong>, lễ hội văn hóa dân tộc và các hội chợ ẩm thực. Đặc biệt, Lễ hội Chè được tổ chức hàng năm nhằm giới thiệu và quảng bá các sản phẩm trà ngon của tỉnh.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Video giới thiệu -->
+  <section id="video">
+    <div class="container">
+      <h2>Video giới thiệu Thái Nguyên</h2>
+      <div class="video-container">
+        <iframe src="https://www.youtube.com/embed/ZBkUTaoffsE" frameborder="0" allowfullscreen></iframe>
+      </div>
+    </div>
+  </section>
+
+  <!-- Liên hệ -->
+  <section id="contact">
+    <div class="container">
+      <h2>Liên hệ</h2>
+      <div class="contact-section">
+        <!-- Form liên hệ -->
+        <div class="contact-form">
+          <form>
+            <input type="text" placeholder="Họ tên" required>
+            <input type="email" placeholder="Email" required>
+            <textarea rows="4" placeholder="Nội dung" required></textarea>
+            <button type="submit">Gửi</button>
+          </form>
+        </div>
+        <!-- Google Map -->
+        <div class="contact-map">
+          <iframe src="https://www.google.com/maps?q=Th%C3%A1i%20Nguy%C3%AAn&z=13&output=embed"></iframe>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    &copy; 2025 Thái Nguyên. | Mạng xã hội:
+    <a href="#">Facebook</a> |
+    <a href="#">Twitter</a> |
+    <a href="#">Instagram</a>
+  </footer>
+
+</body>
+</html>
